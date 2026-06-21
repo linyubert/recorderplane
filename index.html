@@ -64,6 +64,25 @@
   .splash-start:active{ transform:translateY(4px); box-shadow: inset 5px 5px 0 #235016, inset -5px -5px 0 #66c948, 0 4px 0 #173a0e; }
   @keyframes pulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.05); } }
   .splash-tip{ margin-top:14px; font-size:.7rem; color:#fff; text-shadow:2px 2px 0 rgba(0,0,0,.7), 0 0 8px rgba(0,0,0,.5); }
+  /* 右下角作者資訊 */
+  .credits{
+    position:absolute; right:18px; bottom:16px; z-index:5;
+    display:flex; flex-direction:column; align-items:flex-end; gap:7px;
+    text-align:right;
+  }
+  .credits-name{ font-size:.55rem; color:#fff; text-shadow:2px 2px 0 rgba(0,0,0,.7); margin-bottom:2px; }
+  .credits-link{
+    font-family:var(--font); font-size:.5rem; color:#fff; text-decoration:none;
+    background:rgba(0,0,0,.55); border:3px solid #000; padding:7px 10px;
+    box-shadow: inset -2px -2px 0 rgba(0,0,0,.4), inset 2px 2px 0 rgba(255,255,255,.18);
+    text-shadow:1px 1px 0 rgba(0,0,0,.6); transition:background .15s, transform .1s;
+  }
+  .credits-link:hover{ background:#3c8527; transform:translateY(-1px); }
+  .credits-link:active{ transform:translateY(1px); }
+  @media (max-width:640px){
+    .credits{ right:10px; bottom:10px; }
+    .credits-link{ font-size:.42rem; padding:6px 8px; }
+  }
   @media (max-width:640px){
     .splash-start{ font-size:1.1rem; padding:18px 30px; }
   }
@@ -238,6 +257,11 @@
     <div class="splash-inner">
       <button id="enterBtn" class="splash-start">▶ START</button>
       <div class="splash-tip">按下 START 進入遊戲</div>
+    </div>
+    <div class="credits">
+      <span class="credits-name">作者 LYCBert</span>
+      <a class="credits-link" href="https://www.threads.com/@lycbert" target="_blank" rel="noopener">🧵 Threads @lycbert</a>
+      <a class="credits-link" href="https://www.youtube.com/@datoemusic" target="_blank" rel="noopener">▶️ YouTube @datoemusic</a>
     </div>
   </div>
 
@@ -827,5 +851,5 @@ function detectLoop(){
   }
 }
 </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0f4ad59cd5e843c',t:'MTc4MjA2MjM1NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
