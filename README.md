@@ -1,75 +1,63 @@
-# 🎵 直笛動力《飛行任務》✈️
+# Recorder Flight
 
-![直笛動力 飛行任務 主視覺](images/cover.jpg)
+A side-scrolling flight game controlled by a recorder. Blow Sol, La, Si or Do into the microphone and the plane climbs to that line or space on the staff, threading the gap in each oncoming wall.
 
-一款用**高音直笛吹奏**來操控的音樂節奏小遊戲。對著麥克風吹出 **Sol / La / Si / Do**，控制飛機在五線譜上飛到對應的高度，穿過缺口；吹 **高音 Re** 開始遊戲。邊玩邊認識五線譜上的音位，寓教於樂！
+Recorder Flight is part of **Dato Music Lab** (https://datomusiclab.dpdns.org), a working elementary music teacher's studio in Taipei.
 
-> 麥塊像素風 × 五線譜 × 麥克風音高辨識
+## What it is
 
----
+Students learn that Sol sits on the second line and La in the second space, and they can recite it long before they can *use* it. The gap is that staff position stays an abstract fact rather than a thing with consequences.
 
-## 🎮 玩法
+Here the staff is the playing field. Blowing a higher note lifts the plane to a higher line, so pitch, staff position and physical height are the same fact three times over. The wall gaps are labelled with note names, which means reading the staff is not a separate exercise — it is how you avoid crashing.
 
-- 飛機飛在**五線譜**上，吹出的音決定飛行高度，穿過每道牆上**標示音名的缺口**才能通過。
-- 吹著不放，飛機就會穩穩停在那一層，可以提早對準缺口再通過，不用抓時機。
-- 全程 **3 關 30 題**，撐到第 30 題抵達終點即**任務完成**！
+## Features
 
-### 音高 → 高度對照（符合樂理）
+**Microphone pitch detection.** Autocorrelation on the recorder's fundamental, with automatic octave handling.
 
-| 音 | 五線譜位置 | 鍵盤 | 顏色 |
-|----|-----------|------|------|
-| **Sol** (G) | 第二線（線上） | `Z` | 黃 |
-| **La** (A) | 第二間（間內） | `X` | 青綠 |
-| **Si** (B) | 第三線（線上） | `C` | 粉 |
-| **Do** (C) | 第三間（間內） | `V` | 紫 |
-| **高音 Re** (D) | — | `B` / 空白鍵 | 開始 / 重來 |
+**A real staff.** Standard treble clef, with note positions that are musically correct rather than decorative.
 
-> Sol、Si 在**線上**；La、Do 在**間內**，音越高飛越高。
+**Hold to hover.** Sustain a note and the plane parks on that line, so a student can line up on the gap before reaching it instead of having to time a jump. The skill being tested is pitch, not reflexes.
 
-### 關卡天氣
-1. ☀️ 第 1 關 晴天
-2. ⛈️ 第 2 關 陰天打雷
-3. 🌇 第 3 關 黃昏
+**Three stages, thirty questions.** Reach question thirty and the mission is complete.
 
----
+**Keyboard fallback.** `Z` `X` `C` `V` for anyone without a recorder to hand.
 
-## ✨ 特色
+**Local leaderboard**, weather that changes by stage, crash effects, and win/lose sounds.
 
-- 🎤 **麥克風音高辨識**：以自相關（autocorrelation）演算法偵測直笛基頻，支援自動八度。
-- 🎼 **真實五線譜**：含標準高音譜號（G 譜號），音位符合樂理。
-- ⌨️ **鍵盤備援**：沒有直笛也能用 `Z X C V` 遊玩。
-- 🏆 **英雄榜**：本機保存 Top 5 高分紀錄。
-- 🌦️ **關卡天氣變化**、💥 撞擊爆炸特效、🔊 勝利／失敗音效。
-- 📱 **滿版自適應**畫面，適合大螢幕操作。
-- 🧩 **單一 HTML 檔**：主視覺已內嵌，免外部圖片。
+**Fills the screen**, suited to a large display.
 
----
+## How to use
 
-## 📁 檔案結構
+Download the folder and open `index.html` in Chrome, Edge or Safari. Grant microphone access when asked. If the notes are accurate but nothing responds, raise the sensitivity in the settings panel.
+
+### Pitch to height
+
+| Note | Staff position | Key | Colour |
+|:---|:---|:---:|:---:|
+| Sol (G) | Second line | `Z` | Yellow |
+| La (A) | Second space | `X` | Teal |
+| Si (B) | Third line | `C` | Pink |
+| Do (C) | Third space | `V` | Purple |
+| Re (high, D) | — | `B` / `Space` | Start or restart |
+
+Sol and Si sit **on lines**; La and Do sit **in spaces**. Higher note, higher flight.
+
+Stages run through clear skies, a thunderstorm, and dusk.
+
+## Tech
+
+Pure front end — HTML5 Canvas, Web Audio API and `getUserMedia`, with no framework or dependencies. The pixel typeface is Press Start 2P, falling back to a monospace face when offline.
 
 ```
-index.html    # 遊戲本體（主視覺已 base64 內嵌）
-lose.mp3      # 失敗音效
-win.mp3       # 通關音效
+index.html    The game; key art is embedded as base64
+lose.mp3      Failure sound
+win.mp3       Completion sound
 ```
 
+## License
 
-## 💻 本機執行
+Code is MIT — see [LICENSE](LICENSE). Artwork and audio are original work by Yucheng Lin under separate terms; see [NOTICE.md](NOTICE.md).
 
-直接用瀏覽器（Chrome / Edge / Safari）開啟 `index.html` 即可。
+## More from Dato Music Lab
 
-- 麥克風功能需在真正的瀏覽器中授權使用（線上版為 https，可正常使用麥克風）。
-- 若吹得準卻沒反應，可在設定面板調高「靈敏度」。
-
----
-
-## 🛠️ 技術
-
-- 純前端：HTML5 Canvas + Web Audio API + getUserMedia，無任何框架或相依套件。
-- 像素字體：Press Start 2P（離線時自動退回等寬字）。
-
----
-
-## 📜 授權
-
-個人 / 教學用途自由使用。音效檔請自備或確認授權。
+The same pitch detection drives a fruit-slicing arcade game, where accuracy is rewarded with a clean cut and a visible tuner shows whether a student is sharp or flat. For reading rather than playing, there is a two-team sight-reading tug-of-war on a single touchscreen; for duration, a rhythm game about squeezing ketchup for exactly the length of each note. All at **https://datomusiclab.dpdns.org**.
